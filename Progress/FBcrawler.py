@@ -121,14 +121,18 @@ database = 'FB'
 frequently = 60*5
 
 url = input("Nhập link page facebook cần crawl: ")
-numberofpost = 5
+numberofpost = int(input("Số lượng bài viết: "))
 
 driver = create_driver()
 store.check(server, database, desktop_user)
 cursor, cnxn = store.create_cursor(server, database)
 login_navigate(driver, username, password, url)
 
+i = 0
 while True:
+    if i == 1:
+        numberofpost = 5
+    i = 1
     elems = get_elems(driver, numberofpost)
     posts_data, post_urls = get_posts_info(elems)
 
