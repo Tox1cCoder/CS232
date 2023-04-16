@@ -4,7 +4,7 @@ from pandas import DataFrame
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-driver = webdriver.Edge("./msedgedriver.exe")
+driver = webdriver.Chrome("./chromedriver.exe")
 
 url = 'https://vnexpress.net/goc-nhin/binh-luan-nhieu'
 driver.get(url)

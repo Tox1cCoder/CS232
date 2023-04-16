@@ -19,7 +19,7 @@ def download_image(url, folder_name, num):
 
 search_query = str(input("Please provide the keyword..."))
 
-driver = webdriver.Edge("./msedgedriver.exe")
+driver = webdriver.Chrome("./chromedriver.exe")
 url = f"https://www.google.com/search?q={search_query}&source=lnms&tbm=isch"
 driver.get(url)
 

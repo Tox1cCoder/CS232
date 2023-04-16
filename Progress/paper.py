@@ -4,7 +4,7 @@ from time import sleep
 import pandas as pd
 from selenium import webdriver
 
-driver = webdriver.Edge("./msedgedriver.exe")
+driver = webdriver.Chrome("./chromedriver.exe")
 author_name = str(input("Please provide the author's name: "))
 url = f"https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q={author_name}&btnG="
 driver.get(url)

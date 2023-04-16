@@ -1,13 +1,17 @@
 import pyodbc
 import logging
 
+
 def create_cursor(server, database):
-    cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';Trusted_Connection=yes;', autocommit=True)
+    cnxn = pyodbc.connect(
+        'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';Trusted_Connection=yes;',
+        autocommit=True)
     cursor = cnxn.cursor()
     return cursor, cnxn
 
+
 def check_database(server, database):
-    cursor, cnxn = create_cursor(server, database = "master")
+    cursor, cnxn = create_cursor(server, database="master")
 
     database_create_query = f"""
     IF NOT EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = '{database}')
@@ -15,6 +19,7 @@ def check_database(server, database):
     """
     cursor.execute(database_create_query)
     cnxn.close()
+
 
 def check_table(server, database, desktop_user):
     cursor, cnxn = create_cursor(server, database)
@@ -68,11 +73,12 @@ def check_table(server, database, desktop_user):
     else:
         print("reps table checked")
     cnxn.close()
-    
+
 
 def check(server, database, desktop_user):
     check_database(server, database)
     check_table(server, database, desktop_user)
+
 
 def post_exists(cursor, post_data):
     cursor.execute("SELECT * FROM posts WHERE post_id = ?", post_data['post_id'])
@@ -86,7 +92,7 @@ def store_post(cursor, post_data):
     if row is None:
         try:
             cursor.execute("INSERT INTO posts (post_id, page_id, actor_id, content) VALUES (?, ?, ?, ?)",
-                            post_data['post_id'], post_data['page_id'], post_data['actor_id'], post_data['content'])
+                           post_data['post_id'], post_data['page_id'], post_data['actor_id'], post_data['content'])
             # print("store post success")
         except pyodbc.Error as e:
             logging.error(f"An error occurred: {e}")
@@ -98,7 +104,7 @@ def store_cmt(cursor, cmt_info):
     if row is None:
         try:
             cursor.execute("INSERT INTO comments (comment_id, post_id, author, message) VALUES (?, ?, ?, ?)",
-                            cmt_info['comment_id'], cmt_info['post_id'], cmt_info['author'], cmt_info['message'])
+                           cmt_info['comment_id'], cmt_info['post_id'], cmt_info['author'], cmt_info['message'])
             # print("store comment success")
         except pyodbc.Error as e:
             logging.error(f"An error occurred: {e}")
@@ -110,7 +116,7 @@ def store_rep(cursor, rep):
     if row is None:
         try:
             cursor.execute("INSERT INTO replies(rep_id, rep_to, rep_author, rep_message) VALUES (?, ?, ?, ?)",
-                            rep['rep_id'], rep['rep_to'], rep['rep_author'], rep['rep_message'])
+                           rep['rep_id'], rep['rep_to'], rep['rep_author'], rep['rep_message'])
             # print("store rep success")
         except pyodbc.Error as e:
             logging.error(f"An error occurred: {e}")
