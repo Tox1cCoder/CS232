@@ -115,8 +115,8 @@ BASEURL = "https://www.facebook.com/"
 
 username ="cs232khcl@gmail.com"
 password = "definitelynotapassword"
-desktop_user = "DESKTOP-NHATMIN\DELL"
-server = 'DESKTOP-NHATMIN\SQLEXPRESS02'
+desktop_user = "DESKTOP-NHATMIN\DELL" # -> Win+R -> msinfo32 -> User Name
+server = 'DESKTOP-NHATMIN\SQLEXPRESS02'# server name khi mở SQL server management studio
 database = 'FB'
 frequently = 60*5
 
