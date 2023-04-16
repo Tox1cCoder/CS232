@@ -9,11 +9,11 @@
 
 ## THÀNH VIÊN NHÓM
 
-| STT |   MSSV   |       Họ và Tên |     Chức Vụ |                  Email |
-| --- | :------: | --------------: | ----------: | ---------------------: |
-| 1   | 21522581 | Nguyễn Duy Thái | Nhóm trưởng | 21522581@gm.uit.edu.vn |
-| 2   | 2152 | Trần Duy Tân |  Thành viên | 2152@gm.uit.edu.vn |
-| 3   | 2152 | Lê Nhật Minh |  Thành viên | 2152@gm.uit.edu.vn |
+| STT |   MSSV   |       Họ và Tên |                  Email |
+| --- | :------: | --------------: | ---------------------: |
+| 1   | 21522581 | Nguyễn Duy Thái | 21522581@gm.uit.edu.vn |
+| 2   | 2152 | Trần Duy Tân | 2152@gm.uit.edu.vn |
+| 3   | 2152 | Lê Nhật Minh | 2152@gm.uit.edu.vn |
 
 ## GIỚI THIỆU MÔN HỌC
 
