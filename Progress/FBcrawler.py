@@ -12,12 +12,12 @@ import ast
 import random
 import store_data as store
 
-def create_driver():
+def create_driver(driver_path):
     chrome_options = webdriver.ChromeOptions()
     prefs = {"profile.default_content_setting_values.notifications" : 2}
     chrome_options.add_experimental_option("prefs",prefs)
     # chrome_options.headless = True
-    driver = webdriver.Chrome(service = Service('C:\Workspaces\Crawler\chromedriver.exe'), options=chrome_options)
+    driver = webdriver.Chrome(service = Service(driver_path), options=chrome_options)
     return driver
 
 def login_navigate(driver, usr, pwd, url):
@@ -75,7 +75,7 @@ def pre_crawl_cmt(driver):
             viewmore_cmt = driver.find_element(By.CSS_SELECTOR, ".async_elem:not(.async_elem_preprocess) ._108_")
             WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "._108_")))
             viewmore_cmt.click()
-            time.sleep(random.randint(10,15))
+            time.sleep(random.randint(40,60))
         except NoSuchElementException:
             break
     
@@ -85,7 +85,7 @@ def pre_crawl_cmt(driver):
     for viewmore_rep in viewmore_reps:
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "._2b1h.async_elem")))
         viewmore_rep.click()
-        time.sleep(random.randint(10,15))
+        time.sleep(random.randint(40,60))
 
 def crawl_cmts_reps(driver,cursor, post_id):
     comments = driver.find_elements(By.CSS_SELECTOR, ":not(._2b1k) > ._2a_i")
@@ -116,6 +116,7 @@ BASEURL = "https://www.facebook.com/"
 username ="cs232khcl@gmail.com"
 password = "definitelynotapassword"
 desktop_user = "DESKTOP-NHATMIN\DELL"
+driver_path = '.\chromedriver.exe'
 server = 'DESKTOP-NHATMIN\SQLEXPRESS02'
 database = 'FB'
 frequently = 60*5
@@ -123,7 +124,7 @@ frequently = 60*5
 url = input("Nhập link page facebook cần crawl: ")
 numberofpost = 5
 
-driver = create_driver()
+driver = create_driver(driver_path)
 store.check(server, database, desktop_user)
 cursor, cnxn = store.create_cursor(server, database)
 login_navigate(driver, username, password, url)
@@ -142,6 +143,6 @@ while True:
             pre_crawl_cmt(driver)
             post_id = posts_data[i]["post_id"]
             crawl_cmts_reps(driver, cursor, post_id)
-            time.sleep(random.randint(40, 60))
+            time.sleep(random.randint(50, 60))
 
     time.sleep(frequently)
