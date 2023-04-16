@@ -12,8 +12,8 @@
 | STT |   MSSV   |       Họ và Tên |                  Email |
 | --- | :------: | --------------: | ---------------------: |
 | 1   | 21522581 | Nguyễn Duy Thái | 21522581@gm.uit.edu.vn |
-| 2   | 21522576 | Trần Duy Tân | 2152@gm.uit.edu.vn |
-| 3   | 21522339 | Lê Nhật Minh | 2152@gm.uit.edu.vn |
+| 2   | 21522576 | Trần Duy Tân | 21522576@gm.uit.edu.vn |
+| 3   | 21522339 | Lê Nhật Minh | 21522339@gm.uit.edu.vn |
 
 ## GIỚI THIỆU MÔN HỌC
 
